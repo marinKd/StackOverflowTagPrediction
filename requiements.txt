@@ -1,0 +1,6 @@
+flask
+pandas
+pickle
+gunicorn
+sklearn
+scikit-image
