@@ -12,8 +12,9 @@ from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 from skmultilearn.problem_transform import LabelPowerset
 
-questions = pd.read_csv('/Users/rose/Desktop/project2/StackOverflowTagPrediction/Questions.csv', encoding='latin-1')
-tags = pd.read_csv('/Users/rose/Desktop/project2/StackOverflowTagPrediction/Tags.csv', encoding='latin-1')
+questions = pd.read_csv(
+    'C:/Users/marin/code/capstone/Questions.csv', encoding='latin-1')
+tags = pd.read_csv('C:/Users/marin/code/capstone/Tags.csv', encoding='latin-1')
 
 questions.pop('OwnerUserId')
 questions.pop('CreationDate')

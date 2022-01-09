@@ -35,18 +35,11 @@ def main():
         # Make a prediction 
         predictions = model.predict(X).toarray()
 
-        # Get the first and only value of the prediction.
-        prediction = predictions[0][1]
-
-        # Get the predicted probabs
-        predicted_probas = model.predict_proba(X)
-
-        # Get the value of the first, and only, predicted proba.
-        predicted_probas[0]
-#        percent_java = predicted_probas[0]
-#       percent_c = predicted_probas[1]
-#        percent_javascript = predicted_probas[2]
-#        percent_android = predicted_probas[3]
+        # Get the value of the predicted probabilities
+        xpercent_java = model.predict_proba(X)[:, 0]
+        xpercent_c = model.predict_proba(X)[:, 1]
+        xpercent_javascript = model.predict_proba(X)[:, 2]
+        xpercent_android = model.predict_proba(X)[:, 3]
 
         for i in range(4):
             if predictions[0][i] == 1:
@@ -61,8 +54,12 @@ def main():
 
         return flask.render_template('index.html',
                                      input_text=user_input_text,
-                                     result=prediction)
-
+                                     result=prediction,
+                                     percent_java=xpercent_java,
+                                     percent_c=xpercent_c,
+                                     percent_javascript=xpercent_javascript,
+                                     percent_android=xpercent_android
+                                     )
 
 @app.route('/input_values/', methods=['GET', 'POST'])
 def input_values():
